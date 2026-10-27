@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net">
   <diagram name="Seq - ticketing-processor" id="seq-proc">
-    <mxGraphModel dx="982" dy="544" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1200" math="0" shadow="0">
+    <mxGraphModel dx="1704" dy="936" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1200" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -19,31 +19,31 @@
         <mxCell id="lh-dlq" parent="1" style="shape=mxgraph.uml.lifeline;whiteSpace=wrap;html=1;fontStyle=1;fontSize=11;" value="SQS&#xa;ticketing-dlq" vertex="1">
           <mxGeometry height="50" width="130" x="880" y="40" as="geometry" />
         </mxCell>
-        <mxCell id="ll-sqs" edge="1" parent="1" style="endArrow=none;dashed=1;strokeColor=#9673A6;" value="">
+        <mxCell id="ll-sqs" edge="1" parent="1" style="endArrow=none;dashed=1;" value="">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="105" y="90" as="sourcePoint" />
             <mxPoint x="105" y="1150" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="ll-proc" edge="1" parent="1" style="endArrow=none;dashed=1;strokeColor=#82B366;" value="">
+        <mxCell id="ll-proc" edge="1" parent="1" style="endArrow=none;dashed=1;" value="">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="310" y="90" as="sourcePoint" />
             <mxPoint x="310" y="1150" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="ll-dynord" edge="1" parent="1" style="endArrow=none;dashed=1;strokeColor=#2E73B8;" value="">
+        <mxCell id="ll-dynord" edge="1" parent="1" style="endArrow=none;dashed=1;" value="">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="525" y="90" as="sourcePoint" />
             <mxPoint x="525" y="1150" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="ll-dynevt" edge="1" parent="1" style="endArrow=none;dashed=1;strokeColor=#2E73B8;" value="">
+        <mxCell id="ll-dynevt" edge="1" parent="1" style="endArrow=none;dashed=1;" value="">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="735" y="90" as="sourcePoint" />
             <mxPoint x="735" y="1150" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="ll-dlq" edge="1" parent="1" style="endArrow=none;dashed=1;strokeColor=#B85450;" value="">
+        <mxCell id="ll-dlq" edge="1" parent="1" style="endArrow=none;dashed=1;" value="">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="945" y="90" as="sourcePoint" />
             <mxPoint x="945" y="1150" as="targetPoint" />
@@ -136,7 +136,7 @@
         <mxCell id="alt-fail-txt" parent="alt-fail" style="text;html=1;fontSize=9;fontStyle=2;" value="SQS incrementa receiveCount → tras 3 intentos mueve el mensaje a ticketing-dlq automáticamente" vertex="1">
           <mxGeometry height="24" width="880" x="10" y="22" as="geometry" />
         </mxCell>
-        <mxCell id="e-redrive" edge="1" parent="loop-box" style="edgeStyle=orthogonalEdgeStyle;endArrow=open;endFill=0;dashed=1;strokeColor=#B85450;fontSize=9;" value="redrive (receiveCount=3, automático)">
+        <mxCell id="e-redrive" edge="1" parent="loop-box" style="edgeStyle=orthogonalEdgeStyle;endArrow=open;endFill=0;dashed=1;fontSize=9;" value="redrive (receiveCount=3, automático)">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="65" y="420" as="sourcePoint" />
             <mxPoint x="905" y="420" as="targetPoint" />
