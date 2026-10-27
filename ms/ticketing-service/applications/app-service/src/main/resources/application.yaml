@@ -1,0 +1,43 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: "TicketingService"
+  devtools:
+    add-properties: false
+  h2:
+    console:
+      enabled: true
+      path: "/h2"
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "health,prometheus"
+  endpoint:
+    health:
+      probes:
+        enabled: true
+cors:
+  allowed-origins: "http://localhost:4200,http://localhost:8080"
+adapter:
+  sqs:
+    region: "us-east-1"
+    queue-url: "${ADAPTER_SQS_QUEUE_URL:http://localhost:4566/000000000000/ticketing-queue-dev}"
+    endpoint: "${ADAPTER_SQS_ENDPOINT:http://localhost:4566}"
+aws:
+  region: "us-east-1"
+  dynamodb:
+    endpoint: "${AWS_DYNAMODB_ENDPOINT:http://localhost:4566}"
+    table-name: "events-dev"
+    orders-table-name: "orders-dev"
+springdoc:
+  swagger-ui:
+    enabled: true
+    path: "/api-docs/swagger-ui.html"
+  api-docs:
+    enabled: true
+    path: "/api-docs/ticketing"
+  webjars:
+    prefix: "/docs"
+  disable-swagger-default-url: true

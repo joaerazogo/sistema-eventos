@@ -1,0 +1,55 @@
+services:
+  localstack:
+    image: localstack/localstack:4
+    container_name: ticketing-localstack
+    ports:
+      - "4566:4566"
+    environment:
+      SERVICES: sqs,dynamodb
+      AWS_DEFAULT_REGION: us-east-1
+      PERSISTENCE: 1
+    volumes:
+      - localstack-data:/var/lib/localstack
+    healthcheck:
+      test: ["CMD", "bash", "-c", "curl -fsS http://localhost:4566/_localstack/health | grep -q '\"dynamodb\"'"]
+      interval: 5s
+      timeout: 5s
+      retries: 15
+      start_period: 10s
+
+  ticketing-service:
+    build:
+      context: ./ms/ticketing-service
+      dockerfile: deployment/Dockerfile
+    container_name: ticketing-service
+    ports:
+      - "8080:8080"
+    environment:
+      AWS_ACCESS_KEY_ID: test
+      AWS_SECRET_ACCESS_KEY: test
+      AWS_DYNAMODB_ENDPOINT: http://localstack:4566
+      ADAPTER_SQS_ENDPOINT: http://localstack:4566
+      ADAPTER_SQS_QUEUE_URL: http://localstack:4566/000000000000/ticketing-queue-dev
+    depends_on:
+      localstack:
+        condition: service_healthy
+
+  ticketing-processor:
+    build:
+      context: ./ms/ticketing-processor
+      dockerfile: deployment/Dockerfile
+    container_name: ticketing-processor
+    ports:
+      - "8081:8081"
+    environment:
+      AWS_ACCESS_KEY_ID: test
+      AWS_SECRET_ACCESS_KEY: test
+      AWS_DYNAMODB_ENDPOINT: http://localstack:4566
+      ENTRYPOINT_SQS_ENDPOINT: http://localstack:4566
+      ENTRYPOINT_SQS_QUEUE_URL: http://localstack:4566/000000000000/ticketing-queue-dev
+    depends_on:
+      localstack:
+        condition: service_healthy
+
+volumes:
+  localstack-data:

@@ -1,0 +1,31 @@
+# Ticketing Platform — cURL requests
+# Importar en Postman: Import → Raw text → pegar el contenido
+# Reemplazar <eventId> y <orderId> con los valores reales
+
+# Crear evento
+curl -s -X POST http://localhost:8080/api/v1/events \
+  -H "Content-Type: application/json" \
+  -d '{"name":"Rock Concert","venue":"National Stadium","date":"2026-12-01T20:00:00Z","totalCapacity":100}'
+
+# Listar eventos
+curl -s http://localhost:8080/api/v1/events
+
+# Consultar disponibilidad
+curl -s http://localhost:8080/api/v1/events/<eventId>/availability
+
+# Comprar tiquetes
+curl -s -X POST http://localhost:8080/api/v1/purchases \
+  -H "Content-Type: application/json" \
+  -d '{"eventId":"<eventId>","userId":"user-001","quantity":2}'
+
+# Asignar cortesia  (reemplazar <orderId> con una orden en estado RESERVED)
+curl -s -X POST http://localhost:8080/api/v1/orders/<orderId>/complimentary
+
+# Consultar estado de orden
+curl -s http://localhost:8080/api/v1/orders/<orderId>
+
+# Health ticketing-service
+curl -s http://localhost:8080/actuator/health
+
+# Health ticketing-processor
+curl -s http://localhost:8081/actuator/health

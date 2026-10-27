@@ -1,0 +1,194 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Architecture" id="arch-01">
+    <mxGraphModel dx="1937" dy="1073" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1200" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="mobile" parent="1" style="shape=mxgraph.android.phone2;strokeColor=#DEA533;strokeWidth=2;fillColor=#FFE6CC;fontStyle=1;fontSize=11;verticalLabelPosition=bottom;verticalAlign=top;" value="Mobile App" vertex="1">
+          <mxGeometry height="80" width="50" x="40" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="web" parent="1" style="shape=mxgraph.cisco.computers_and_peripherals.pc;strokeColor=#006EAF;strokeWidth=2;fillColor=#DAE8FC;fontStyle=1;fontSize=11;verticalLabelPosition=bottom;verticalAlign=top;" value="Web App" vertex="1">
+          <mxGeometry height="50" width="60" x="40" y="380" as="geometry" />
+        </mxCell>
+        <mxCell id="aws-box" parent="1" style="points=[[0,0],[0.25,0],[0.5,0],[0.75,0],[1,0],[1,0.25],[1,0.5],[1,0.75],[1,1],[0.75,1],[0.5,1],[0.25,1],[0,1],[0,0.75],[0,0.5],[0,0.25]];shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_aws_cloud_alt;verticalLabelPosition=top;verticalAlign=bottom;align=center;spacingTop=25;fontStyle=1;fontSize=14;" value="AWS Cloud" vertex="1">
+          <mxGeometry height="630" width="1680" x="170" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="dTBY-UZ2mY5SN2EtRgBD-15" edge="1" parent="aws-box" source="svc-box" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;defaultLabelBackgroundColor=page;" target="dTBY-UZ2mY5SN2EtRgBD-3">
+          <mxGeometry relative="1" x="-0.2352" as="geometry">
+            <Array as="points">
+              <mxPoint x="230" y="16.313063815569667" />
+              <mxPoint x="1585" y="16.313063815569667" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dTBY-UZ2mY5SN2EtRgBD-16" connectable="0" parent="dTBY-UZ2mY5SN2EtRgBD-15" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];inheritText=1;defaultLabelBackgroundColor=page;" value="&lt;span style=&quot;font-size: 9px; background-color: rgb(255, 255, 255);&quot;&gt;orders: save (RESERVED) / findById/ updateComplimentary&lt;/span&gt;" vertex="1">
+          <mxGeometry relative="1" x="-0.0746" y="-1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="svc-box" parent="aws-box" style="swimlane;startSize=30;fontStyle=1;fontSize=12;rounded=1;" value="ticketing-service  :8080" vertex="1">
+          <mxGeometry height="253.53658536585368" width="340" x="60" y="76.91346475108587" as="geometry" />
+        </mxCell>
+        <mxCell id="dTBY-UZ2mY5SN2EtRgBD-13" parent="svc-box" style="image;sketch=0;aspect=fixed;html=1;align=center;fontSize=12;image=img/lib/mscae/Docker.svg;points=[[0.522,0,0],[0.496,1,0],[0.01,0.89,0],[0.99,0.803,0],[0.985,0.244,0],[0.912,0.997,0],[0.038,0.972,0],[0.295,0.107,0]];labelPerimeter=1;" value="" vertex="1">
+          <mxGeometry height="49.93902439024391" width="60.90256097560977" x="120" y="46.09756097560976" as="geometry" />
+        </mxCell>
+        <mxCell id="dTBY-UZ2mY5SN2EtRgBD-14" parent="svc-box" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;span style=&quot;font-size: 10px; text-align: left; white-space: nowrap;&quot;&gt;REST API (Spring WebFlux)&lt;/span&gt;&lt;br style=&quot;padding: 0px; margin: 0px; font-size: 10px; text-align: left; white-space: nowrap;&quot;&gt;&lt;br style=&quot;padding: 0px; margin: 0px; font-size: 10px; text-align: left; white-space: nowrap;&quot;&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;font-size: 10px; text-wrap-mode: nowrap;&quot;&gt;POST /api/v1/events&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;font-size: 10px; text-wrap-mode: nowrap;&quot;&gt;GET /api/v1/events&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;font-size: 10px; text-wrap-mode: nowrap;&quot;&gt;GET /api/v1/events/{eventId}/availability&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;font-size: 10px; text-wrap-mode: nowrap;&quot;&gt;POST /api/v1/purchases&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;font-size: 10px; text-wrap-mode: nowrap;&quot;&gt;POST /api/v1/orders/{orderId}/complimentary&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;font-size: 10px; text-wrap-mode: nowrap;&quot;&gt;GET /api/v1/orders/{orderId}&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;br&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="92.19512195121952" width="205" x="67.5" y="115.24390243902441" as="geometry" />
+        </mxCell>
+        <mxCell id="sqs-box" parent="aws-box" style="swimlane;startSize=30;fontStyle=1;fontSize=12;rounded=1;" value="Amazon SQS" vertex="1">
+          <mxGeometry height="169.02439024390245" width="260" x="520" y="130.6939525559639" as="geometry" />
+        </mxCell>
+        <mxCell id="dTBY-UZ2mY5SN2EtRgBD-6" edge="1" parent="sqs-box" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;defaultLabelBackgroundColor=page;" target="sqs-redrive" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="60" y="84.51219512195122" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sqs-redrive" parent="sqs-box" style="text;html=1;fontSize=9;fontStyle=2;align=center;" value="redrive policy&#xa;(maxReceiveCount=3)" vertex="1">
+          <mxGeometry height="23.04878048780488" width="220" x="20" y="119.08536585365856" as="geometry" />
+        </mxCell>
+        <mxCell id="e-redrive" edge="1" parent="sqs-box" style="edgeStyle=orthogonalEdgeStyle;dashed=1;endArrow=open;endFill=0;strokeColor=#9673A6;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="90" y="61.463414634146346" as="sourcePoint" />
+            <mxPoint x="150" y="61.463414634146346" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dTBY-UZ2mY5SN2EtRgBD-5" parent="sqs-box" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;fillColor=#E7157B;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.sqs;labelPerimeter=1;" value="" vertex="1">
+          <mxGeometry height="46.09756097560976" width="46.09756097560976" x="30" y="30.731707317073173" as="geometry" />
+        </mxCell>
+        <mxCell id="dTBY-UZ2mY5SN2EtRgBD-8" parent="sqs-box" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;span style=&quot;font-size: 11px; white-space: nowrap;&quot;&gt;ticketing-queue-{env}&lt;/span&gt;" vertex="1">
+          <mxGeometry height="23.04878048780488" width="60" x="30" y="69.14634146341464" as="geometry" />
+        </mxCell>
+        <mxCell id="dTBY-UZ2mY5SN2EtRgBD-11" parent="sqs-box" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;fillColor=#E7157B;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.sqs;labelPerimeter=1;" value="" vertex="1">
+          <mxGeometry height="46.09756097560976" width="46.09756097560976" x="150" y="30.731707317073173" as="geometry" />
+        </mxCell>
+        <mxCell id="dTBY-UZ2mY5SN2EtRgBD-12" parent="sqs-box" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;span style=&quot;font-size: 11px; white-space: nowrap;&quot;&gt;ticketing-dlq-{env}&lt;/span&gt;&lt;br style=&quot;padding: 0px; margin: 0px; font-size: 11px; white-space: nowrap;&quot;&gt;&lt;span style=&quot;font-size: 11px; white-space: nowrap;&quot;&gt;(Dead Letter Queue)&lt;/span&gt;" vertex="1">
+          <mxGeometry height="23.04878048780488" width="80" x="150" y="76.82926829268294" as="geometry" />
+        </mxCell>
+        <mxCell id="proc-box" parent="aws-box" style="swimlane;startSize=30;fontStyle=1;fontSize=12;rounded=1;" value="ticketing-processor  :8081" vertex="1">
+          <mxGeometry height="291.95121951219517" width="360" x="920" y="60.600400935516205" as="geometry" />
+        </mxCell>
+        <mxCell id="dTBY-UZ2mY5SN2EtRgBD-17" parent="proc-box" style="image;sketch=0;aspect=fixed;html=1;align=center;fontSize=12;image=img/lib/mscae/Docker.svg;points=[[0.522,0,0],[0.496,1,0],[0.01,0.89,0],[0.99,0.803,0],[0.985,0.244,0],[0.912,0.997,0],[0.038,0.972,0],[0.295,0.107,0]];labelPerimeter=1;" value="" vertex="1">
+          <mxGeometry height="49.93902439024391" width="60.90256097560977" x="149.54999999999995" y="39.399599064483795" as="geometry" />
+        </mxCell>
+        <mxCell id="proc-consumer" parent="proc-box" style="rounded=1;fontSize=10;align=left;spacingLeft=8;" value="SQS Consumer (long-poll)&#xa;  • ReceiveMessage&#xa;  • DeleteMessage (on success)&#xa;&#xa;Scheduler (every 60s)&#xa;• findExpiredReservations (GSI status-expiresAt-index)&#xa;• save Order (AVAILABLE)&#xa;• updateAvailableTickets (+qty)&#xa;&#xa;orders-{env}&#xa;• findById / save (PENDING_CONFIRMATION → SOLD)&#xa;• findExpiredReservations (GSI query)&#xa;&#xa;events-{env}&#xa;• updateAvailableTickets (restore on expiry)" vertex="1">
+          <mxGeometry height="191.2" width="270" x="30" y="79.4" as="geometry" />
+        </mxCell>
+        <mxCell id="dynamo-box" parent="aws-box" style="swimlane;startSize=30;fillColor=#DAE8FC;strokeColor=#2E73B8;fontStyle=1;fontSize=12;rounded=1;" value="Amazon DynamoDB" vertex="1">
+          <mxGeometry height="230.48780487804876" width="220" x="1420" y="99.96224523889073" as="geometry" />
+        </mxCell>
+        <mxCell id="dTBY-UZ2mY5SN2EtRgBD-1" parent="dynamo-box" style="outlineConnect=0;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;shape=mxgraph.aws3.dynamo_db;fillColor=#2E73B8;gradientColor=none;labelPerimeter=1;" value="" vertex="1">
+          <mxGeometry height="46.09756097560975" width="52" x="35" y="48.414634146341456" as="geometry" />
+        </mxCell>
+        <mxCell id="dTBY-UZ2mY5SN2EtRgBD-2" parent="dynamo-box" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;span style=&quot;font-size: 10px; white-space: nowrap;&quot;&gt;events-{env}&lt;/span&gt;&lt;br style=&quot;padding: 0px; margin: 0px; font-size: 10px; white-space: nowrap;&quot;&gt;&lt;span style=&quot;font-size: 10px; white-space: nowrap;&quot;&gt;PK: eventId&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;font-size: 10px; white-space: nowrap;&quot;&gt;GSI:&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: transparent; font-size: 10px; text-wrap-mode: nowrap;&quot;&gt;venue-date-index&lt;/span&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="23.048780487804876" width="60" x="31" y="101.1951219512195" as="geometry" />
+        </mxCell>
+        <mxCell id="dTBY-UZ2mY5SN2EtRgBD-3" parent="dynamo-box" style="outlineConnect=0;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;shape=mxgraph.aws3.dynamo_db;fillColor=#2E73B8;gradientColor=none;labelPerimeter=1;" value="" vertex="1">
+          <mxGeometry height="46.09756097560975" width="50" x="140" y="51.41463414634146" as="geometry" />
+        </mxCell>
+        <mxCell id="dTBY-UZ2mY5SN2EtRgBD-4" parent="dynamo-box" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;span style=&quot;font-size: 10px; white-space: nowrap;&quot;&gt;orders-{env}&lt;/span&gt;&lt;br style=&quot;padding: 0px; margin: 0px; font-size: 10px; white-space: nowrap;&quot;&gt;&lt;span style=&quot;font-size: 10px; white-space: nowrap;&quot;&gt;PK: orderId&lt;/span&gt;&lt;br style=&quot;padding: 0px; margin: 0px; font-size: 10px; white-space: nowrap;&quot;&gt;&lt;span style=&quot;font-size: 10px; white-space: nowrap;&quot;&gt;GSI: status-expiresAt-index&lt;/span&gt;" vertex="1">
+          <mxGeometry height="23.048780487804876" width="70" x="130" y="113.8780487804878" as="geometry" />
+        </mxCell>
+        <mxCell id="localstack" parent="aws-box" style="rounded=1;fillColor=#FFF2CC;strokeColor=#D6B656;fontStyle=2;fontSize=10;dashed=1;" value="LocalStack :4566 (dev only)&#xa;emula DynamoDB + SQS + Secrets Manager" vertex="1">
+          <mxGeometry height="38.41463414634146" width="320" x="920" y="430.2439024390244" as="geometry" />
+        </mxCell>
+        <mxCell id="e-svc-sqs" edge="1" parent="aws-box" source="svc-box" style="edgeStyle=orthogonalEdgeStyle;exitX=1;exitY=0.5;entryX=0;entryY=0.4;" value="SendMessage&#xa;{orderId}">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="550" y="188.41062479117943" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e-sqs-proc" edge="1" parent="aws-box" source="dTBY-UZ2mY5SN2EtRgBD-5" style="edgeStyle=orthogonalEdgeStyle;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;" value="ReceiveMessage&#xa;(long-poll, max=10)">
+          <mxGeometry relative="1" x="0.0178" as="geometry">
+            <Array as="points">
+              <mxPoint x="610" y="184.5" />
+              <mxPoint x="610" y="90" />
+              <mxPoint x="880" y="90" />
+              <mxPoint x="880" y="188.4" />
+            </Array>
+            <mxPoint x="610" y="188.41062479117943" as="sourcePoint" />
+            <mxPoint x="920" y="188.39999999999998" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e-svc-dynamo" edge="1" parent="aws-box" source="svc-box" style="edgeStyle=orthogonalEdgeStyle;exitX=1;exitY=0.5;fontSize=9;" target="dTBY-UZ2mY5SN2EtRgBD-1" value="events: save / findById / findAll / updateAvailableTickets">
+          <mxGeometry relative="1" x="0.2042" as="geometry">
+            <Array as="points">
+              <mxPoint x="420" y="204.54477113264284" />
+              <mxPoint x="420" y="39.36184430337454" />
+              <mxPoint x="1420" y="39.36184430337454" />
+              <mxPoint x="1420" y="162.28867357166723" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e-proc-dynamo" edge="1" parent="aws-box" style="edgeStyle=orthogonalEdgeStyle;fontSize=9;" target="dTBY-UZ2mY5SN2EtRgBD-1" value="">
+          <mxGeometry relative="1" x="-0.4026" y="-19" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="1320" y="261.3" />
+              <mxPoint x="1320" y="180" />
+            </Array>
+            <mxPoint x="1280" y="261.3" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dTBY-UZ2mY5SN2EtRgBD-23" connectable="0" parent="e-proc-dynamo" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];inheritText=1;fontSize=9;" value="&lt;span style=&quot;background-color: rgb(255, 255, 255);&quot;&gt;events: updateAvailableTickets&amp;nbsp;&lt;/span&gt;&lt;div&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255);&quot;&gt;(restore)&lt;/span&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry relative="1" x="0.2548" y="-1" as="geometry">
+            <mxPoint x="-10" y="-21" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dTBY-UZ2mY5SN2EtRgBD-20" edge="1" parent="aws-box" source="proc-box" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.78;entryDx=0;entryDy=0;entryPerimeter=0;defaultLabelBackgroundColor=page;" target="dTBY-UZ2mY5SN2EtRgBD-3">
+          <mxGeometry relative="1" x="-0.3653" as="geometry">
+            <Array as="points">
+              <mxPoint x="1660" y="340" />
+              <mxPoint x="1660" y="187.3" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dTBY-UZ2mY5SN2EtRgBD-22" connectable="0" parent="dTBY-UZ2mY5SN2EtRgBD-20" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];inheritText=1;defaultLabelBackgroundColor=page;" value="&lt;span style=&quot;font-size: 9px; background-color: rgb(255, 255, 255);&quot;&gt;orders: findById / save (PENDING_CONFIRMATION→SOLD) /&lt;/span&gt;&lt;br style=&quot;font-size: 9px; background-color: rgb(236, 236, 236); padding: 0px; margin: 0px;&quot;&gt;&lt;span style=&quot;font-size: 9px; background-color: rgb(255, 255, 255);&quot;&gt;&amp;nbsp;findExpired (GSI)&lt;/span&gt;" vertex="1">
+          <mxGeometry relative="1" x="-0.5984" y="1" as="geometry">
+            <mxPoint x="43" y="14" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e-mobile-svc" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;exitX=1;exitY=0.5;entryX=0;entryY=0.35;" target="svc-box" value="HTTPS">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="90" y="270" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e-web-svc" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;exitX=1;exitY=0.5;entryX=0;entryY=0.65;" target="svc-box" value="HTTPS">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="100" y="415" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sm-title" parent="1" style="text;html=1;fontStyle=1;fontSize=13;align=center;" value="Ticket State Machine" vertex="1">
+          <mxGeometry height="20" width="220" x="160" y="940" as="geometry" />
+        </mxCell>
+        <mxCell id="s-avail" parent="1" style="ellipse;fillColor=#D5E8D4;strokeColor=#82B366;fontStyle=1;fontSize=11;" value="AVAILABLE" vertex="1">
+          <mxGeometry height="45" width="140" x="160" y="975" as="geometry" />
+        </mxCell>
+        <mxCell id="s-res" parent="1" style="ellipse;fillColor=#FFF2CC;strokeColor=#D6B656;fontStyle=1;fontSize=11;" value="RESERVED" vertex="1">
+          <mxGeometry height="45" width="140" x="380" y="975" as="geometry" />
+        </mxCell>
+        <mxCell id="s-pend" parent="1" style="ellipse;fillColor=#DAE8FC;strokeColor=#6C8EBF;fontStyle=1;fontSize=11;" value="PENDING_CONFIRMATION" vertex="1">
+          <mxGeometry height="45" width="190" x="610" y="975" as="geometry" />
+        </mxCell>
+        <mxCell id="s-sold" parent="1" style="ellipse;fillColor=#F8CECC;strokeColor=#B85450;fontStyle=1;fontSize=11;" value="SOLD" vertex="1">
+          <mxGeometry height="45" width="120" x="890" y="975" as="geometry" />
+        </mxCell>
+        <mxCell id="sm-e1" edge="1" parent="1" source="s-avail" style="edgeStyle=orthogonalEdgeStyle;fontSize=9;" target="s-res" value="purchase&#xa;(ticketing-service)">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="sm-e2" edge="1" parent="1" source="s-res" style="edgeStyle=orthogonalEdgeStyle;fontSize=9;" target="s-pend" value="SQS consumer&#xa;(ticketing-processor)">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="sm-e3" edge="1" parent="1" source="s-pend" style="edgeStyle=orthogonalEdgeStyle;fontSize=9;" target="s-sold" value="confirm&#xa;(ticketing-processor)">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="sm-e4" edge="1" parent="1" source="s-res" style="edgeStyle=orthogonalEdgeStyle;exitX=0.5;exitY=1;entryX=0.5;entryY=1;fontSize=9;" target="s-avail" value="expiry &gt;10min&#xa;(scheduler)">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="450" y="1070" />
+              <mxPoint x="230" y="1070" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

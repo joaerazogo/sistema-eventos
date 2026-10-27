@@ -1,0 +1,265 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Seq - ticketing-service" id="seq-svc">
+    <mxGraphModel dx="1704" dy="943" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1400" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="lh-user" parent="1" style="shape=mxgraph.uml.lifeline;whiteSpace=wrap;html=1;fontStyle=1;fontSize=11;" value="User&#xa;(Mobile/Web)" vertex="1">
+          <mxGeometry height="50" width="120" x="40" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="lh-api" parent="1" style="shape=mxgraph.uml.lifeline;whiteSpace=wrap;html=1;fontStyle=1;fontSize=11;" value="ticketing-service&#xa;REST API :8080" vertex="1">
+          <mxGeometry height="50" width="140" x="240" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="lh-dynev" parent="1" style="shape=mxgraph.uml.lifeline;whiteSpace=wrap;html=1;fontStyle=1;fontSize=11;" value="DynamoDB&#xa;events-{env}" vertex="1">
+          <mxGeometry height="50" width="130" x="460" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="lh-dynord" parent="1" style="shape=mxgraph.uml.lifeline;whiteSpace=wrap;html=1;fontStyle=1;fontSize=11;" value="DynamoDB&#xa;orders-{env}" vertex="1">
+          <mxGeometry height="50" width="130" x="670" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="lh-sqs" parent="1" style="shape=mxgraph.uml.lifeline;whiteSpace=wrap;html=1;fontStyle=1;fontSize=11;" value="SQS&#xa;ticketing-queue" vertex="1">
+          <mxGeometry height="50" width="130" x="880" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ll-user" edge="1" parent="1" style="endArrow=none;dashed=1;strokeColor=#6C8EBF;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="100" y="90" as="sourcePoint" />
+            <mxPoint x="100" y="1350" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ll-api" edge="1" parent="1" style="endArrow=none;dashed=1;strokeColor=#AD688B;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="310" y="90" as="sourcePoint" />
+            <mxPoint x="310" y="1350" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ll-dynev" edge="1" parent="1" style="endArrow=none;dashed=1;strokeColor=#2E73B8;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="525" y="90" as="sourcePoint" />
+            <mxPoint x="525" y="1350" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ll-dynord" edge="1" parent="1" style="endArrow=none;dashed=1;strokeColor=#2E73B8;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="735" y="90" as="sourcePoint" />
+            <mxPoint x="735" y="1350" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ll-sqs" edge="1" parent="1" style="endArrow=none;dashed=1;strokeColor=#9673A6;" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="945" y="90" as="sourcePoint" />
+            <mxPoint x="945" y="1350" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sep1" parent="1" style="text;html=1;fontStyle=1;fontSize=11;rounded=1;align=left;spacingLeft=8;" value="1. POST /api/v1/events" vertex="1">
+          <mxGeometry height="24" width="980" x="40" y="110" as="geometry" />
+        </mxCell>
+        <mxCell id="m1-1" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;endArrow=open;endFill=0;" value="POST /api/v1/events {name, totalCapacity, ...}">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="100" y="150" as="sourcePoint" />
+            <mxPoint x="310" y="150" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m1-2" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;endArrow=open;endFill=0;" value="save(Event{eventId=UUID, availableTickets=totalCapacity})">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="310" y="175" as="sourcePoint" />
+            <mxPoint x="525" y="175" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m1-3" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;endArrow=open;endFill=0;dashed=1;" value="Event saved">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="525" y="200" as="sourcePoint" />
+            <mxPoint x="310" y="200" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m1-4" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;endArrow=open;endFill=0;dashed=1;" value="200 OK {eventId, ...}">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="310" y="225" as="sourcePoint" />
+            <mxPoint x="100" y="225" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sep2" parent="1" style="text;html=1;fontStyle=1;fontSize=11;rounded=1;align=left;spacingLeft=8;" value="2. GET /api/v1/events" vertex="1">
+          <mxGeometry height="24" width="980" x="40" y="255" as="geometry" />
+        </mxCell>
+        <mxCell id="m2-1" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;endArrow=open;endFill=0;" value="GET /api/v1/events">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="100" y="295" as="sourcePoint" />
+            <mxPoint x="310" y="295" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m2-2" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;endArrow=open;endFill=0;" value="findAll()">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="310" y="320" as="sourcePoint" />
+            <mxPoint x="525" y="320" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m2-3" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;endArrow=open;endFill=0;dashed=1;" value="Flux&lt;Event&gt;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="525" y="345" as="sourcePoint" />
+            <mxPoint x="310" y="345" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m2-4" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;endArrow=open;endFill=0;dashed=1;" value="200 OK [{eventId, name, availableTickets, ...}]">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="310" y="370" as="sourcePoint" />
+            <mxPoint x="100" y="370" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sep3" parent="1" style="text;html=1;fontStyle=1;fontSize=11;rounded=1;align=left;spacingLeft=8;" value="3. GET /api/v1/events/{eventId}/availability" vertex="1">
+          <mxGeometry height="24" width="980" x="40" y="400" as="geometry" />
+        </mxCell>
+        <mxCell id="m3-1" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;endArrow=open;endFill=0;" value="GET /api/v1/events/{eventId}/availability">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="100" y="440" as="sourcePoint" />
+            <mxPoint x="310" y="440" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m3-2" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;endArrow=open;endFill=0;" value="findById(eventId)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="310" y="465" as="sourcePoint" />
+            <mxPoint x="525" y="465" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m3-3" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;endArrow=open;endFill=0;dashed=1;" value="Event{availableTickets}">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="525" y="490" as="sourcePoint" />
+            <mxPoint x="310" y="490" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m3-4" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;endArrow=open;endFill=0;dashed=1;" value="200 OK {eventId, availableTickets}">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="310" y="515" as="sourcePoint" />
+            <mxPoint x="100" y="515" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sep4" parent="1" style="text;html=1;fontStyle=1;fontSize=11;rounded=1;align=left;spacingLeft=8;" value="4. POST /api/v1/purchases" vertex="1">
+          <mxGeometry height="24" width="980" x="40" y="545" as="geometry" />
+        </mxCell>
+        <mxCell id="m4-1" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;endArrow=open;endFill=0;" value="POST /api/v1/purchases {eventId, userId, quantity}">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="100" y="585" as="sourcePoint" />
+            <mxPoint x="310" y="585" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m4-2" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;endArrow=open;endFill=0;" value="updateAvailableTickets(eventId, -qty)&#xa;[conditional: availableTickets &gt;= qty]">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="310" y="615" as="sourcePoint" />
+            <mxPoint x="525" y="615" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="alt-box" parent="1" style="swimlane;startSize=20;fontSize=9;dashed=1;" value="alt [ConditionalCheckFailedException → oversell prevented]" vertex="1">
+          <mxGeometry height="30" width="660" x="310" y="635" as="geometry" />
+        </mxCell>
+        <mxCell id="alt-txt" parent="alt-box" style="text;html=1;fontSize=9;fontStyle=2;" value="422 Unprocessable Entity — no tickets available" vertex="1">
+          <mxGeometry height="16" width="640" x="10" as="geometry" />
+        </mxCell>
+        <mxCell id="m4-3" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;endArrow=open;endFill=0;dashed=1;" value="Event{availableTickets decremented}">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="525" y="680" as="sourcePoint" />
+            <mxPoint x="310" y="680" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m4-4" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;endArrow=open;endFill=0;" value="save(Order{status=RESERVED, expiresAt=now+10min})">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="310" y="710" as="sourcePoint" />
+            <mxPoint x="735" y="710" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m4-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;endArrow=open;endFill=0;dashed=1;" value="Order{RESERVED}">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="735" y="735" as="sourcePoint" />
+            <mxPoint x="310" y="735" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m4-6" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;endArrow=open;endFill=0;" value="SendMessage({orderId})">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="310" y="765" as="sourcePoint" />
+            <mxPoint x="945" y="765" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m4-7" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;endArrow=open;endFill=0;dashed=1;" value="messageId">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="945" y="790" as="sourcePoint" />
+            <mxPoint x="310" y="790" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m4-8" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;endArrow=open;endFill=0;dashed=1;" value="200 OK {orderId, status=RESERVED}">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="310" y="820" as="sourcePoint" />
+            <mxPoint x="100" y="820" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sep5a" parent="1" style="text;html=1;fontStyle=1;fontSize=11;rounded=1;align=left;spacingLeft=8;" value="5a. POST /api/v1/orders/{orderId}/complimentary" vertex="1">
+          <mxGeometry height="24" width="980" x="40" y="850" as="geometry" />
+        </mxCell>
+        <mxCell id="m5a-1" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;endArrow=open;endFill=0;" value="POST /api/v1/orders/{orderId}/complimentary">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="100" y="890" as="sourcePoint" />
+            <mxPoint x="310" y="890" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m5a-2" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;endArrow=open;endFill=0;" value="findById(orderId)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="310" y="915" as="sourcePoint" />
+            <mxPoint x="735" y="915" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m5a-3" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;endArrow=open;endFill=0;dashed=1;" value="Order{status=RESERVED}">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="735" y="940" as="sourcePoint" />
+            <mxPoint x="310" y="940" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m5a-4" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;endArrow=open;endFill=0;" value="save(Order{status=COMPLIMENTARY})">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="310" y="965" as="sourcePoint" />
+            <mxPoint x="735" y="965" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m5a-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;endArrow=open;endFill=0;dashed=1;" value="Order{COMPLIMENTARY}">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="735" y="990" as="sourcePoint" />
+            <mxPoint x="310" y="990" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m5a-6" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;endArrow=open;endFill=0;dashed=1;" value="200 OK {orderId, status=COMPLIMENTARY}">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="310" y="1015" as="sourcePoint" />
+            <mxPoint x="100" y="1015" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sep5" parent="1" style="text;html=1;fontStyle=1;fontSize=11;rounded=1;align=left;spacingLeft=8;" value="6. GET /api/v1/orders/{orderId}" vertex="1">
+          <mxGeometry height="24" width="980" x="40" y="1045" as="geometry" />
+        </mxCell>
+        <mxCell id="m5-1" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;endArrow=open;endFill=0;" value="GET /api/v1/orders/{orderId}">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="100" y="1085" as="sourcePoint" />
+            <mxPoint x="310" y="1085" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m5-2" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;endArrow=open;endFill=0;" value="findById(orderId)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="310" y="1110" as="sourcePoint" />
+            <mxPoint x="735" y="1110" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m5-3" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;endArrow=open;endFill=0;dashed=1;" value="Order{orderId, status, ...}">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="735" y="1135" as="sourcePoint" />
+            <mxPoint x="310" y="1135" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m5-4" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;endArrow=open;endFill=0;dashed=1;" value="200 OK {orderId, status, eventId, quantity}">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="310" y="1160" as="sourcePoint" />
+            <mxPoint x="100" y="1160" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="c4eF7VBYPsRxh53hfGrT-1" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;endArrow=open;endFill=0;dashed=1;" value="">
+          <mxGeometry relative="1" x="0.5238" as="geometry">
+            <mxPoint x="314" y="186" as="sourcePoint" />
+            <mxPoint x="524" y="186" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,7 @@
+dependencies {
+    implementation 'software.amazon.awssdk:dynamodb-enhanced'
+    implementation "org.mapstruct:mapstruct:1.6.3"
+    implementation 'org.reactivecommons.utils:object-mapper-api:0.1.0'
+    testImplementation 'org.reactivecommons.utils:object-mapper:0.1.0'
+    annotationProcessor "org.mapstruct:mapstruct-processor:1.6.3"
+}
