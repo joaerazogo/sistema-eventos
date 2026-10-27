@@ -1,0 +1,20 @@
+# Terraform
+**/.terraform/
+**/.terraform.lock.hcl
+*.tfstate
+*.tfstate.backup
+*.tfplan
+
+# Gradle
+**/build/
+**/.gradle/
+**/bin/
+
+# Java
+*.class
+*.jar
+*.war
+
+# IDE
+.idea/
+*.iml
